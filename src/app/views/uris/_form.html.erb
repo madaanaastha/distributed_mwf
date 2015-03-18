@@ -1,0 +1,45 @@
+<%= form_for(@uri) do |f| %>
+  <% if @uri.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@uri.errors.count, "error") %> prohibited this uri from being saved:</h2>
+
+      <ul>
+      <% @uri.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :host %><br>
+    <%= f.text_field :host %>
+  </div>
+  <div class="field">
+    <%= f.label :port %><br>
+    <%= f.number_field :port %>
+  </div>
+  <div class="field">
+    <%= f.label :uri_type %><br>
+    <%= f.text_field :uri_type %>
+  </div>
+  <div class="field">
+    <%= f.label :local_id %><br>
+    <%= f.number_field :local_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :slug %><br>
+    <%= f.text_field :slug %>
+  </div>
+  <div class="field">
+    <%= f.label :is_external %><br>
+    <%= f.check_box :is_external %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

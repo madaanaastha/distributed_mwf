@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Import to uri:</strong>
+  <%= @world_import.import_to_uri %>
+</p>
+
+<p>
+  <strong>Import from uri:</strong>
+  <%= @world_import.import_from_uri %>
+</p>
+
+<%= link_to 'Edit', edit_world_import_path(@world_import) %> |
+<%= link_to 'Back', world_imports_path %>

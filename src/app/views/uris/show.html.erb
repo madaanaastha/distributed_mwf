@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Host:</strong>
+  <%= @uri.host %>
+</p>
+
+<p>
+  <strong>Port:</strong>
+  <%= @uri.port %>
+</p>
+
+<p>
+  <strong>Uri type:</strong>
+  <%= @uri.uri_type %>
+</p>
+
+<p>
+  <strong>Local:</strong>
+  <%= @uri.local_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @uri.name %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @uri.slug %>
+</p>
+
+<p>
+  <strong>Is external:</strong>
+  <%= @uri.is_external %>
+</p>
+
+<%= link_to 'Edit', edit_uri_path(@uri) %> |
+<%= link_to 'Back', uris_path %>

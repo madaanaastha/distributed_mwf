@@ -1,0 +1,37 @@
+<% if (session[:username].nil?) %>
+    <div class="notice text-danger" style="margin:auto" id="error-login">
+      <p class="center-block">Please login before adding schema a world.</p></div>
+<% else %>
+
+    <div class="col-lg-12">
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="center-block"><h1>Add schema to <%= @world.name %></h1></div>
+      </div>
+      <%= render 'display/operations'%>
+    </div>
+
+    <div id="schema_definition_div" align="center" style="padding-top:10px">
+      <form class="form-inline" role="form" method="post" action="/worlds/edit_schema">
+        <input type="hidden" id="world-uri" name="uri" value="<%=@world.world_uri%>">
+        <div class="form-group">
+          <label class="sr-only" for="schema-name">Schema Name: </label>
+          <input type="text" class="form-control" id="schema-name" name="schema_name" placeholder="Schema Name"/>
+        </div><!--
+        <div class="form-group">
+          <label class="sr-only" for="colname-schema">Column Name</label>
+          <input type="text" class="form-control" id="col-name-schema" placeholder="Name of column">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="coltype-schema">Column Type</label>
+          <select class="form-control" id="col-type-schema" placeholder="Type of column">
+            <option value="string">:String:</option>
+            <option value="number">:Numeric:</option>
+            <option value="Datetime">:Datetime:</option>
+            <option value="http://localhost:3000/uris/Person">Person</option>
+          </select>
+        </div>-->
+        <button type="submit" class="btn btn-default">Add Schema</button>
+      </form>
+    </div>
+
+<% end %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_type_id: 1
+  world_uri_id: 1
+  privilege_id: MyText
+
+two:
+  event_type_id: 1
+  world_uri_id: 1
+  privilege_id: MyText

@@ -1,0 +1,32 @@
+<% if WorldAdmin.is_administrator?(@world_instance.world_instance_uri, session[:user_uri]) %>
+    <div class="navbar navbar-right navbar-default col-lg-0">
+
+      <ul class="nav navbar-nav">
+        <li class="dropdown" id="user-functions-li">
+          <a id="user-functions-a" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/world_admins/add_access_rules?world_id=<%=@world_instance.world_instance_uri%>">Add access rules</a></li>
+            <li><a href="/world_admins/view_access_rules?world_uri=<%=@world_instance.world_instance_uri%>">View access rules</a></li>            <!--<li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li> -->
+          </ul>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav">
+        <li class="dropdown" id="user-functions-li">
+          <a id="user-functions-a" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/world_instances/import_world?uri=<%= @world_instance.world_instance_uri %>">Import a world</a>
+            </li>
+            <li><a href="/world_instances/add_schema?uri=<%= @world_instance.world_instance_uri %>">Add a schema</a>
+            </li>
+            <li><a href="/world_instances/select_schema?uri=<%= @world_instance.world_instance_uri %>">Populate a
+              schema</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+<% end %>

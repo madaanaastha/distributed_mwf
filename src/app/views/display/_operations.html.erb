@@ -1,0 +1,91 @@
+<% if WorldAdmin.is_administrator?(@world[:world_uri], session[:user_uri]) %>
+
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Current Capacity:</label>
+
+      <div class="col-sm-3">
+        <select class="form-control">
+          <% if session[:rules] != nil
+               session[:rules].each do |key, value| %>
+                  <option value="<%=value%>"><%= key %></option>
+              <% end %>
+          <% end %>
+        </select>
+      </div>
+    </div>
+
+    <div class="navbar navbar-right navbar-default col-lg-0">
+      <ul class="nav navbar-nav">
+        <li class="dropdown" id="user-functions-li">
+          <a id="user-functions-a" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li id="subclass-concept">
+              <a href="/worlds/subclass?uri=<%= @world.world_uri %>">Create a world of
+                type <%= @world.name %></a></li>
+            <li id="subclass-concept-instance">
+              <a href="/world_instances/subclass?uri=<%= @world.world_uri %>">Create an instance of
+                type <%= @world.name %></a></li>
+            <li id="contain-concept">
+              <a href="/worlds/contain?uri=<%= @world.world_uri %>">Create a world located
+                in <%= @world.name %></a>
+            </li>
+            <li id="contain-concept-instance">
+              <a href="/world_instances/contain?uri=<%= @world.world_uri %>">Create an instance located
+                in <%= @world.name %></a></li>
+            <!--<li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li> -->
+          </ul>
+        </li>
+      </ul>
+      <%unless Uri.get_record(@world.world_uri).is_external%>
+      <ul class="nav navbar-nav">
+        <li class="dropdown" id="user-functions-li">
+          <a id="user-functions-a" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-th"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/worlds/import_world?uri=<%= @world.world_uri %>">Import a world</a></li>
+            <li><a href="/worlds/add_schema?uri=<%= @world.world_uri %>">Add a schema</a></li>
+            <li><a href="/worlds/select_schema?uri=<%= @world.world_uri %>">Populate a schema</a></li>
+            <!--<li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li> -->
+          </ul>
+        </li>
+      </ul>
+      <%end%>
+      <ul class="nav navbar-nav">
+        <li class="dropdown" id="user-functions-li">
+          <a id="user-functions-a" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-share"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/grid/create_proxy">Create world proxy</a></li>
+            <!--<li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li> -->
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li class="dropdown" id="user-functions-li">
+          <a id="user-functions-a" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-log-in"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="/world_admins/add_access_rules?world_id=<%= @world.world_uri %>">Add access
+              rules</a></li>
+            <li><a href="/world_admins/view_access_rules?world_uri=<%= @world.world_uri %>">View access
+              rules</a></li>
+            <!--<li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li> -->
+          </ul>
+        </li>
+      </ul>
+    </div>
+<% end unless @world.nil? %>

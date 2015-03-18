@@ -1,0 +1,64 @@
+<div class="navbar-collapse collapse" id="login-div">
+  <ul class="nav navbar-nav navbar-right">
+    <li class="dropdown" id="user-login-li">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <form class="navbar-form">
+            <p>
+          <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in",class:"btn btn-block btn-danger", style: "color:#fff"%>
+            </p>
+          </form>
+        </li>
+        <li class="divider"></li>
+        <li style="text-align: center"><p>OR</p></li>
+        <li class="divider"></li>
+        <li>
+          <form class="navbar-form" role="login" id="login" action="/authentication/login" method="post">
+            <div class="form-group">
+              <p><input type="text" name="login" class="form-control" placeholder="Username">
+              </p>
+
+              <p><input type="password" name="password" class="form-control" placeholder="Password">
+              </p>
+              <% if flash[:notice] %>
+                  <div class="notice text-danger" id="error-login"><%= flash[:notice] %></div>
+              <% end %>
+              <p>
+                <button type="submit" class="btn btn-block btn-info">Login</button>
+              </p>
+              <p>New user? <a href="/world_instances/register_new_user">Register</a></p>
+            </div>
+          </form>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<!--Checks if the login was successful or not. Data is fetched from the JSON set by the authentication_controller/login -->
+<script type="text/javascript">
+    $("#login").submit(function (e) {
+        var postData = $(this).serializeArray();
+        var formURL = $(this).attr("action");
+        $.ajax(
+                {
+                    url: formURL,
+                    type: "POST",
+                    data: postData,
+                    success: function (data, textStatus, jqXHR) {
+                        $('#div-partial-login-logout').html(data);
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert("failure");
+                    }
+                });
+        e.preventDefault(); //STOP default action
+        e.unbind; //unbind. to stop multiple form submit.
+    });
+</script>
+<script type="text/javascript">
+    $('.dropdown-toggle').click(function () {
+        $('#error-login').html("");
+    })
+</script>

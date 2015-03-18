@@ -1,0 +1,46 @@
+<div class="col-lg-12">
+  <div class="col-lg-6 col-lg-offset-3">
+    <div class="center-block"><h1><%= @world.name %></h1></div>
+  </div>
+  <%= render 'display/operations'%>
+</div>
+<% if @superclass.nil? %>
+    <h4 align="center"> is of type <a href="<%= @world.superclass_uri %>"><%= @world.superclass_name %></a></h4>
+<%else%>
+    <h4 align="center"> is of type <a href="<%= @superclass.get_uri %>"><%= @superclass.name %></a></h4>
+<%end%>
+<% if @container.nil? %>
+    <h4 align="center"> is contained inside <a href="<%= @world.container_uri %>"><%= @world.container_name %></a></h4><br>
+<%else%>
+    <h4 align="center"> is contained inside <a href="<%= @container.get_uri %>"><%= @container.name %></a></h4><br>
+<%end%>
+<div class="col-lg-6">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Description</h3>
+    </div>
+    <div class="panel-body">
+      <ul class="list-group">
+        <li class="list-group-item"><%= @world.description %></li>
+        <li class="list-group-item"><%= @world.name %> was created at <%= @world.created_at %></li>
+        <li class="list-group-item"><%= @world.name %> was last updated at <%= @world.updated_at %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="col-lg-6">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title">Attributes</h3>
+    </div>
+    <div class="panel-body">
+      <% attrs =eval(@world.attrs) unless @world.attrs.nil? %>
+      <% unless attrs.nil? %>
+          <% attrs.each do |key, val| %>
+              <%= key %> => <%= val %>
+              <br>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

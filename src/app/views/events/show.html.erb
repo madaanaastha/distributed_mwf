@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event type:</strong>
+  <%= @event.event_type %>
+</p>
+
+<p>
+  <strong>Date time:</strong>
+  <%= @event.date_time %>
+</p>
+
+<p>
+  <strong>World uri:</strong>
+  <%= @event.world_uri_id %>
+</p>
+
+<p>
+  <strong>Privilege:</strong>
+  <%= @event.privilege_id %>
+</p>
+
+<p>
+  <strong>User uri:</strong>
+  <%= @event.user_uri_id %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

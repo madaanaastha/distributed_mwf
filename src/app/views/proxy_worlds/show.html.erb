@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>World uri:</strong>
+  <%= @proxy_world.world_uri_id %>
+</p>
+
+<p>
+  <strong>Proxy world uri:</strong>
+  <%= @proxy_world.proxy_world_uri_id %>
+</p>
+
+<%= link_to 'Edit', edit_proxy_world_path(@proxy_world) %> |
+<%= link_to 'Back', proxy_worlds_path %>

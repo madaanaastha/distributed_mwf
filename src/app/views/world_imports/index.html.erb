@@ -1,0 +1,27 @@
+<h1>Listing world_imports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Import to uri</th>
+      <th>Import from uri</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @world_imports.each do |world_import| %>
+      <tr>
+        <td><%= world_import.import_to_uri %></td>
+        <td><%= world_import.import_from_uri %></td>
+        <td><%= link_to 'Show', world_import %></td>
+        <td><%= link_to 'Edit', edit_world_import_path(world_import) %></td>
+        <td><%= link_to 'Destroy', world_import, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New World import', new_world_import_path %>

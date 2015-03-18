@@ -1,0 +1,25 @@
+<%= form_for(@proxy_world) do |f| %>
+  <% if @proxy_world.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@proxy_world.errors.count, "error") %> prohibited this proxy_world from being saved:</h2>
+
+      <ul>
+      <% @proxy_world.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :world_uri_id %><br>
+    <%= f.number_field :world_uri_id %>
+  </div>
+  <div class="field">
+    <%= f.label :proxy_world_uri_id %><br>
+    <%= f.number_field :proxy_world_uri_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

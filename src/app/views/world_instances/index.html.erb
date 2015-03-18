@@ -1,0 +1,47 @@
+<h1>Listing world_instances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Superclass uri</th>
+      <th>Container uri</th>
+      <th>Description</th>
+      <th>Attrs</th>
+      <th>Options</th>
+      <th>World instance uri</th>
+      <th>Home location uri</th>
+      <th>Image</th>
+      <th>Url</th>
+      <th>Access rules</th>
+      <th>Version</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @world_instances.each do |world_instance| %>
+      <tr>
+        <td><%= world_instance.name %></td>
+        <td><%= world_instance.superclass_uri %></td>
+        <td><%= world_instance.container_uri %></td>
+        <td><%= world_instance.description %></td>
+        <td><%= world_instance.attrs %></td>
+        <td><%= world_instance.options %></td>
+        <td><%= world_instance.world_instance_uri %></td>
+        <td><%= world_instance.home_location_uri %></td>
+        <td><%= world_instance.image %></td>
+        <td><%= world_instance.url %></td>
+        <td><%= world_instance.access_rules %></td>
+        <td><%= world_instance.version %></td>
+        <td><%= link_to 'Show', world_instance %></td>
+        <td><%= link_to 'Edit', edit_world_instance_path(world_instance) %></td>
+        <td><%= link_to 'Destroy', world_instance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New World instance', new_world_instance_path %>

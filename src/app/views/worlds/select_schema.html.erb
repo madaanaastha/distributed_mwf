@@ -1,0 +1,28 @@
+<% if (session[:username].nil?) %>
+    <div class="notice text-danger" style="margin:auto" id="error-login">
+      <p class="center-block">Please login before adding schema a world.</p></div>
+<% else %>
+    <div class="col-lg-12">
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="center-block"><h1>Populate a table <%= @world.name %></h1></div>
+      </div>
+      <%= render 'display/operations' %>
+    </div>
+    <div id="world_import_div" align="right" class="col-lg-6" style="padding-top:10px">
+      <form class="form-inline" role="form" method="get" action="/worlds/populate_table_form">
+        <input type="hidden" id="world-uri" name="uri" value="<%= @world.world_uri %>">
+
+        <div class="form-group">
+          <label class="sr-only" for="schema-name">Select Table: </label>
+          <select class="form-control"
+                  id="schema-name"
+                  name="schema-name" placeholder="Select a table name">
+                <% @tables.each do |t|%>
+                    <option value="<%= t[:uri] %>"><%= t[:name] %></option>
+                <% end %>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-default">Select Schema</button>
+      </form>
+    </div>
+<% end %>

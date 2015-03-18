@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  superclass_uri_id: 1
+  container_uri_id: 1
+  description: MyText
+  attrs: MyText
+  options: MyText
+  world_instance_uri_id: 1
+  home_location_uri_id: 1
+  image: MyString
+  url: MyString
+  access_rules: MyText
+  version: 1
+
+two:
+  name: MyString
+  superclass_uri_id: 1
+  container_uri_id: 1
+  description: MyText
+  attrs: MyText
+  options: MyText
+  world_instance_uri_id: 1
+  home_location_uri_id: 1
+  image: MyString
+  url: MyString
+  access_rules: MyText
+  version: 1

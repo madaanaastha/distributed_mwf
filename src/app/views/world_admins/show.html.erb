@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>World uri:</strong>
+  <%= @world_admin.world_uri_id %>
+</p>
+
+<p>
+  <strong>Admin uri:</strong>
+  <%= @world_admin.admin_uri_id %>
+</p>
+
+<%= link_to 'Edit', edit_world_admin_path(@world_admin) %> |
+<%= link_to 'Back', world_admins_path %>

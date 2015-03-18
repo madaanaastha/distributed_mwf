@@ -1,0 +1,25 @@
+<%= form_for(@world_import) do |f| %>
+  <% if @world_import.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@world_import.errors.count, "error") %> prohibited this world_import from being saved:</h2>
+
+      <ul>
+      <% @world_import.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :import_to_uri %><br>
+    <%= f.number_field :import_to_uri %>
+  </div>
+  <div class="field">
+    <%= f.label :import_from_uri %><br>
+    <%= f.number_field :import_from_uri %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

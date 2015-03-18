@@ -1,0 +1,27 @@
+<h1>Listing world_admins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>World uri</th>
+      <th>Admin uri</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @world_admins.each do |world_admin| %>
+      <tr>
+        <td><%= world_admin.world_uri_id %></td>
+        <td><%= world_admin.admin_uri_id %></td>
+        <td><%= link_to 'Show', world_admin %></td>
+        <td><%= link_to 'Edit', edit_world_admin_path(world_admin) %></td>
+        <td><%= link_to 'Destroy', world_admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New World admin', new_world_admin_path %>

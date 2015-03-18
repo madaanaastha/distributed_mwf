@@ -1,0 +1,2 @@
+umodule AssociationInstancesHelper
+end

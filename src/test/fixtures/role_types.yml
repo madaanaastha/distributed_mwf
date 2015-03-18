@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  role_name: MyString
+  role_player_uri_id: 1
+  role_uri_id: 1
+  world_uri_id: 1
+  description: MyText
+  attrs: MyText
+  version: 1
+  options: MyText
+  parent_role_uri_id: 1
+
+two:
+  role_name: MyString
+  role_player_uri_id: 1
+  role_uri_id: 1
+  world_uri_id: 1
+  description: MyText
+  attrs: MyText
+  version: 1
+  options: MyText
+  parent_role_uri_id: 1

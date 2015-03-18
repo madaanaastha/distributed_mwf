@@ -1,0 +1,45 @@
+<% if (session[:username].nil?) %>
+    <div class="notice text-danger" style="margin:auto" id="error-login">
+      <p class="center-block">Please login before adding access rules in a world.</p></div>
+<% else %>
+
+    <div class="col-lg-12">
+      <% if @uritype == "World" %>
+          <div class="col-lg-6 col-lg-offset-3">
+            <div class="center-block"><h1>Add Access rules to <%= @world.name %></h1></div>
+          </div>
+          <%= render 'display/operations' %>
+      <% else %>
+          <div class="col-lg-6 col-lg-offset-3">
+            <div class="center-block"><h1>Add Access rules to <%= @world_instance.name %></h1></div>
+          </div>
+          <%= render 'display/world_instances_operations' %>
+      <% end %>
+    </div>
+
+    <div id="schema_definition_div" align="center" style="padding-top:10px">
+      <form class="form-horizontal" role="form" method="post" action="/world_admins/list_roles_to_add_access_rules">
+        <% if @uritype == "World" %>
+            <input type="hidden" id="world_uri" name="world_uri" value="<%= @world.world_uri %>">
+        <% else %>
+            <input type="hidden" id="world_uri" name="world_uri" value="<%= @world_instance.world_instance_uri %>">
+        <% end %>
+        <div class="form-group">
+          <label for="list-imports" class="control-label col-sm-5">Select an imported world</label>
+
+          <div class="col-sm-4">
+            <select name="list_imports" class="form-control" placeholder="imports" id="list_imports" required>
+              <% @imports_uris.each do |i| %>
+                  <option value="<%= i %>"><%= i.split('/').last %></option>
+              <% end unless @imports_uris.empty? %>
+            </select>
+
+            <div class="help-block with-errors"></div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-default">List roles</button>
+      </form>
+    </div>
+
+<% end %>

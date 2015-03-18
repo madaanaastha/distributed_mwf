@@ -1,0 +1,25 @@
+<%= form_for(@world_admin) do |f| %>
+  <% if @world_admin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@world_admin.errors.count, "error") %> prohibited this world_admin from being saved:</h2>
+
+      <ul>
+      <% @world_admin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :world_uri_id %><br>
+    <%= f.number_field :world_uri_id %>
+  </div>
+  <div class="field">
+    <%= f.label :admin_uri_id %><br>
+    <%= f.number_field :admin_uri_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

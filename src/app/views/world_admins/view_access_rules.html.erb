@@ -1,0 +1,13 @@
+<% if (session[:username].nil?) %>
+    <div class="notice text-danger" style="margin:auto" id="error-login">
+      <p class="center-block">Please login before adding access rules in a world.</p></div>
+<% else %>
+
+    <div class="col-lg-12">
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="center-block"><h1>Access rules of <%= @world.name %></h1></div>
+      </div>
+      <%= render 'display/operations' %>
+    </div>
+
+<% end %>

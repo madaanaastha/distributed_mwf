@@ -1,0 +1,109 @@
+<script type="text/javascript">
+    function toggle(box) {
+        var thisClass = $(box).attr('class');
+        $(':checkbox.' + thisClass + ":not(#" + $(box).attr('id') + ")").removeAttr('checked');
+        $(box).attr('checked', 'checked');
+    }
+
+
+    function addRow() {
+        columnName = $('#col-name-schema').val();
+        columnType = $('#col-type-schema').val();
+//        defaultValue = $('#default-value-schema').val();
+        if(columnType!='string' && columnType!='datetime' && columnType!='number')
+            $('#schema-table tbody').append('<tr><td>' + columnName + '</td><td>' + columnType + '</td>' +
+                '<td><input type="checkbox" name="cb" class="roleclass" id="check_'+columnName+'"value="' + columnName + '" onchange="toggle(this)"/></td>' +
+                '<td><a onclick="deleteRow(this);">Delete Row</a></td></tr>');
+        else
+            $('#schema-table tbody').append('<tr><td>' + columnName + '</td><td>' + columnType + '</td>' +
+                    '<td></td>' +
+                    '<td><a onclick="deleteRow(this);">Delete Row</a></td></tr>');
+        $('#schema-edit-form').trigger("reset");
+    }
+
+    function deleteRow(e) {
+        $(e).closest('tr').remove();
+    }
+    function dataRow(value1, value2, value3) {
+        this.colName = value1;
+        this.colType = value2;
+//        this.defaultValue = value3;
+    }
+
+    function collateTableAndSubmit() {
+        var dataArray = new Array();
+        for (var i = 1; i < $("#schema-table tr").length; i++) {
+            dataArray.push(
+                    new dataRow(
+                            $("#schema-table tr:nth-child(" + i + ") td").eq(0).html(),
+                            $("#schema-table tr:nth-child(" + i + ") td").eq(1).html(),
+                            $("#schema-table tr:nth-child(" + i + ") td").eq(2).checked)
+            );
+        }
+        var sJson = JSON.stringify(dataArray);
+        $('#schema-table-form').append('<input type="hidden" value=' + sJson + ' name="columnDetails">');
+        $('#schema-table-form').submit();
+    }
+
+</script>
+<% if (session[:username].nil?) %>
+    <div class="notice text-danger" style="margin:auto" id="error-login">
+      <p class="center-block">Please login before editing the schema of a world.</p></div>
+<% else %>
+    <div class="col-lg-12">
+      <div class="col-lg-6 col-lg-offset-3">
+        <div class="center-block"><h1>Editing schema -- <%= @world.name %>:<%= @schema_name %></h1></div>
+      </div>
+      <%= render 'display/operations' %>
+    </div>
+
+    <div id="schema_definition_div" align="center" style="padding-top:20px">
+      <form class="form-inline" id='schema-edit-form' role="form">
+        <input type="hidden" id="world-uri" value="<%= @world.world_uri %>">
+        <!--<div class="form-group">
+          <label class="sr-only" for="schema-name">Schema Name: </label>
+          <input type="text" class="form-control" id="schema-name" placeholder="Schema Name"/>
+        </div>-->
+        <div class="form-group">
+          <label class="sr-only" for="col-name-schema">Column Name</label>
+          <input type="text" class="form-control" id="col-name-schema" placeholder="Column Name">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="col-type-schema">Column Type</label>
+          <select class="form-control" id="col-type-schema" placeholder="Column Type">
+            <option value="string">:String:</option>
+            <option value="number">:Numeric:</option>
+            <option value="datetime">:Datetime:</option>
+            <% @imported_world_uris.each do |uri| %>
+                <option value="<%= uri %>"><%= uri.split('/').last %></option>
+            <% end unless @imported_world_uris.empty? %>
+          </select>
+        </div>
+        <!--<div class="form-group">
+          <label class="sr-only" for="default-value-schema">Default Value</label>
+          <input type="text" class="form-control" id="default-value-schema" placeholder="Default Value">
+        </div> -->
+        <button type="button" class="btn btn-default" onclick="addRow();">Add Row</button>
+      </form>
+    </div>
+    <div class="col-lg-8 col-lg-offset-2" style="padding-top: 20px">
+      <form id="schema-table-form" action="/worlds/save_schema" method="post">
+        <input type="hidden" name="world_uri" value="<%= @world.world_uri %>"/>
+        <input type="hidden" name="schema_name" value="<%= @schema_name %>"/>
+        <table class="table table-responsive table-bordered" id="schema-table">
+          <thead>
+          <tr>
+            <th>Column Name</th>
+            <th>Column Type</th>
+            <th>Role Player?</th>
+            <!--<th>Default Value</th> -->
+          </tr>
+          </thead>
+          <tbody>
+
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-default" onclick="collateTableAndSubmit();">Submit Schema</button>
+      </form>
+    </div>
+<% end %>

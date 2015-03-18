@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Distributed Trusted Many Worlds on a Frame</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div class="navbar navbar-default navbar-static-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/worlds">Distributed Trusted Many Worlds on a Frame</a>
+    </div>
+    <div id="div-partial-login-logout">
+      <% unless World.count.zero? %>
+          <% if session[:username].nil? %>
+              <%= render partial: 'layouts/login' %>
+          <% else %>
+              <%= render partial: 'layouts/logout' %>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container clear-top" style="min-height:500px; margin:auto;">
+  <%= yield %>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-left">Developed by <a href="http://wsl.iiitb.ac.in">Web Semantics Laboratory, IIIT-Bangalore</a></p>
+
+    <p class="pull-right">Developed using <a href="http://www.rubyonrails.org">Rails</a>,
+      <a href="http://www.getbootstrap.com">Bootstrap</a> and <a href="http://www.glyphicons.com">Glyphicons</a></p>
+  </div>
+</footer>
+</body>
+</html>

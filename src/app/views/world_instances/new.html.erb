@@ -1,0 +1,5 @@
+<% if (session[:username].nil?) %>
+    <div class="notice text-danger" style="margin:auto" id="error-login"><p class="center-block">Please login before creating a world instance.</p></div>
+<% else %>
+    <%= render 'form' %>
+<% end %>

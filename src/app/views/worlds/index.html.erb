@@ -1,0 +1,47 @@
+<h1>Listing worlds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Superclass uri</th>
+      <th>Container uri</th>
+      <th>Description</th>
+      <th>Attrs</th>
+      <th>Options</th>
+      <th>World uri</th>
+      <th>Home location uri</th>
+      <th>Image</th>
+      <th>Url</th>
+      <th>Access rules</th>
+      <th>Version</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @worlds.each do |world| %>
+      <tr>
+        <td><%= world.name %></td>
+        <td><%= world.superclass_uri %></td>
+        <td><%= world.container_uri %></td>
+        <td><%= world.description %></td>
+        <td><%= world.attrs %></td>
+        <td><%= world.options %></td>
+        <td><%= world.world_uri %></td>
+        <td><%= world.home_location_uri %></td>
+        <td><%= world.image %></td>
+        <td><%= world.url %></td>
+        <td><%= world.access_rules %></td>
+        <td><%= world.version %></td>
+        <td><%= link_to 'Show', world %></td>
+        <td><%= link_to 'Edit', edit_world_path(world) %></td>
+        <td><%= link_to 'Destroy', world, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New World', new_world_path %>

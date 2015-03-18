@@ -1,0 +1,39 @@
+== README
+
+This README documents whatever steps are necessary to get the application up and running.
+
+* Ruby version
+    Install the latest rubystack with Rails 4.
+    We have tested the current implementation using rubystack-2.0.0-23.
+
+* System dependencies
+
+* Configuration
+   Install mercurial and bitnami rubystack-2.0.0-23.
+   A 32-bit rubystack installer for Ubuntu is available at /data/repository/distributed_trusted_mwf/rubystack_installer/directory
+
+* Getting the code on your system
+   1) Make a directory rootset/src.
+   2) Through terminal, do "hg init" (creates repository) in the src folder.
+   3) Pull the code: "hg pull ssh://repository@192.168.220.10/distributed_trusted_mwf/src". Enter the password after running this command.
+      For password, please contact the authors.
+   4) Make a link of the rootset folder and place it in the rubystack-2.0.0-23/projects folder.
+   5) From the rubyconsole (go to rubystack-2.0.0-23 folder and run "./rubyconsole"), do a bundle install. Execute "bundle install".
+   
+* Database creation
+   Find database design in a PDF titled "RootsetDatabaseDesign.pdf" next to the app forlder.
+
+* Database initialization
+    In the src/db folder, check if a database development.sqlite exists. 
+    All database migration scripts are in rootset/src/db/migrate folder. For a fresh database, run command "rake db:migrate". 
+    This will generate Development database.
+   For Production database, execute "rake db:migrate RAILS_ENV=production"
+
+* How to run the server
+	 In rubyconsole, go to projects/rootset/src/ and start the server using "rails s". 
+	 This will start server in development mode on port 3000. In the browser, go to the url localhost:3000. 
+	 The rootset is up on your local system in case there is no error.
+	 For running multiple instances, use the command: rails s -p<port number> -e<environment> -Ptmp\pids\<some_unique_name>.pid
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.

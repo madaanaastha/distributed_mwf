@@ -1,0 +1,48 @@
+<div class="navbar-collapse collapse" id="logout-div">
+  <ul class="nav navbar-nav navbar-right">
+    <li class="dropdown" id="user-logout-li">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Logged in as <%= session[:username] %>
+        <span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu">
+        <li>
+          <form class="navbar-form">
+            <p id="flashnotice"></p>
+            <p>
+              <%= link_to "My Profile", "#{session[:user_uri]}", id: "my-profile", class: "btn btn-block btn-success", style: "color:#fff" %>
+            </p>
+          </form>
+        </li>
+        <li>
+          <form class="navbar-form" role="logout" id="logoutbtn" action="/authentication/logout" method="post">
+            <p>
+              <button type="submit" class="btn btn-block btn-info" id="logout-btn">Logout</button>
+            </p>
+          </form>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<!--Checks if the login was successful or not. Data is fetched from the JSON set by the authentication_controller/login -->
+<script type="text/javascript">
+    $("#logoutbtn").submit(function (e) {
+        var postData = $(this).serializeArray();
+        var formURL = $(this).attr("action");
+        $.ajax(
+                {
+                    url: formURL,
+                    type: "POST",
+                    data: postData,
+                    success: function (data, textStatus, jqXHR) {
+                        $('#div-partial-login-logout').html(data);
+                        $('#flashnotice').html('');
+                        location.reload();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $('#flashnotice').html('Wrong username or password');
+                    }
+                });
+        e.preventDefault(); //STOP default action
+        e.unbind; //unbind. to stop multiple form submit.
+    });
+</script>

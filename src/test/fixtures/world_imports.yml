@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  import_to_uri_id: 1
+  import_from_uri_id: 1
+
+two:
+  import_to_uri_id: 1
+  import_from_uri_id: 1

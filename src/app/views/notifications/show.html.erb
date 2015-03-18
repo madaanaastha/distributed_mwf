@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event type:</strong>
+  <%= @notification.event_type_id %>
+</p>
+
+<p>
+  <strong>World uri:</strong>
+  <%= @notification.world_uri_id %>
+</p>
+
+<p>
+  <strong>Privilege:</strong>
+  <%= @notification.privilege_id %>
+</p>
+
+<%= link_to 'Edit', edit_notification_path(@notification) %> |
+<%= link_to 'Back', notifications_path %>

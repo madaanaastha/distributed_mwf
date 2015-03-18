@@ -1,0 +1,2 @@
+umodule ApplicationHelper
+end

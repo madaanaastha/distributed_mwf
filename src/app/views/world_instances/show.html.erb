@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @world_instance.name %>
+</p>
+
+<p>
+  <strong>Superclass uri:</strong>
+  <%= @world_instance.superclass_uri_id %>
+</p>
+
+<p>
+  <strong>Container uri:</strong>
+  <%= @world_instance.container_uri_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @world_instance.description %>
+</p>
+
+<p>
+  <strong>Attrs:</strong>
+  <%= @world_instance.attrs %>
+</p>
+
+<p>
+  <strong>Options:</strong>
+  <%= @world_instance.options %>
+</p>
+
+<p>
+  <strong>World instance uri:</strong>
+  <%= @world_instance.world_instance_uri_id %>
+</p>
+
+<p>
+  <strong>Home location uri:</strong>
+  <%= @world_instance.home_location_uri_id %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @world_instance.image %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @world_instance.url %>
+</p>
+
+<p>
+  <strong>Access rules:</strong>
+  <%= @world_instance.access_rules %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @world_instance.version %>
+</p>
+
+<%= link_to 'Edit', edit_world_instance_path(@world_instance) %> |
+<%= link_to 'Back', world_instances_path %>

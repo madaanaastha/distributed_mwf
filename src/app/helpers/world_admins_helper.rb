@@ -1,0 +1,2 @@
+module WorldAdminsHelper
+end
